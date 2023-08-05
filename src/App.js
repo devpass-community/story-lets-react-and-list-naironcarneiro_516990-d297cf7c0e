@@ -3,7 +3,7 @@ import productsData from "./products.json";
 
 const Item = ({ item }) => {
   return (
-    <div>
+    <>
       {item.map((product) => (
         <li className="item" data-testid="product-item" key={product.id}>
           <img src={product.thumbnail} alt={product.title} />
@@ -13,7 +13,7 @@ const Item = ({ item }) => {
           <span>{product.price}</span>
         </li>
       ))}
-    </div>
+    </>
   );
 };
 
