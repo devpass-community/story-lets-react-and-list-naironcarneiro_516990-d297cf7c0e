@@ -3,17 +3,17 @@ import productsData from "./products.json";
 
 const Item = ({ item }) => {
   return (
-    <>
+    <li className="item" data-testid="product-item">
       {item.map((product) => (
-        <li className="item" data-testid="product-item" key={product.id}>
+        <>
           <img src={product.thumbnail} alt={product.title} />
           <h4>{product.title}</h4>
           <p>{product.description}</p>
           <span>{product.brand}</span>
           <span>{product.price}</span>
-        </li>
+        </>
       ))}
-    </>
+    </li>
   );
 };
 
