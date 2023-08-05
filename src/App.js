@@ -1,25 +1,32 @@
-import Container from './components/Container';
+import Container from "./components/Container";
+import productsData from "./products.json";
 
 const Item = ({ item }) => {
+  const smartphones = item.filter(
+    (product) => product.category === "smartphones"
+  );
+
+  console.log(smartphones);
+
   return (
-    <li className='item' data-testid='product-item'>
-      { /* TODO */ }
-      <img src="thumbnail here"></img>
-      <h4> title here </h4>
-      <p> description here </p>
-      <span> brand here </span>
-      <span> price here </span>
-    </li>
-  )
-}
+    <ul className="list" data-testid="product-list">
+      {smartphones.map((product) => (
+        <li key={product.id} className="item" data-testid="product-item">
+          <img src={product.thumbnail} alt={product.title} />
+          <h4>{product.title}</h4>
+          <p>{product.description}</p>
+          <span>{product.brand}</span>
+          <span>{product.price}</span>
+        </li>
+      ))}
+    </ul>
+  );
+};
 
 function App() {
   return (
     <Container>
-      <ul className='list' data-testid='product-list'>
-        { /* TODO */ }
-        <Item />
-      </ul>
+      <Item item={productsData} />
     </Container>
   );
 }
