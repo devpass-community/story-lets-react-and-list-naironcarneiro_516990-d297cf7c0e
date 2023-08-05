@@ -2,9 +2,13 @@ import Container from "./components/Container";
 import productsData from "./products.json";
 
 const Item = ({ item }) => {
+  const smartphones = item.filter(
+    (product) => product.category === "smartphones"
+  );
+
   return (
     <li className="item" data-testid="product-item">
-      {item.map((product) => (
+      {smartphones.map((product) => (
         <>
           <img src={product.thumbnail} alt={product.title} />
           <h4>{product.title}</h4>
