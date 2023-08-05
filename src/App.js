@@ -6,27 +6,27 @@ const Item = ({ item }) => {
     (product) => product.category === "smartphones"
   );
 
+  console.log(smartphones);
+
   return (
-    <li className="item" data-testid="product-item">
+    <ul className="list" data-testid="product-list">
       {smartphones.map((product) => (
-        <>
+        <li key={product.id} className="item" data-testid="product-item">
           <img src={product.thumbnail} alt={product.title} />
           <h4>{product.title}</h4>
           <p>{product.description}</p>
           <span>{product.brand}</span>
           <span>{product.price}</span>
-        </>
+        </li>
       ))}
-    </li>
+    </ul>
   );
 };
 
 function App() {
   return (
     <Container>
-      <ul className="list" data-testid="product-list">
-        <Item item={productsData} />
-      </ul>
+      <Item item={productsData} />
     </Container>
   );
 }
